@@ -106,6 +106,8 @@ groups:
             __dashboardUid__: adx2z31woc8w0e
             __panelId__: "7"
             summary: Die Luftfeuchtigkeit in Bienenstock 1 ist größer als 70%
+          labels:
+            affects: bienenstock-1
           isPaused: false
         - uid: fdx5yxcnoh9tsb
           title: Luftfeuchtigkeit Bienenstock 1 < 50%
@@ -208,6 +210,8 @@ groups:
             __dashboardUid__: adx2z31woc8w0e
             __panelId__: "7"
             summary: Die Luftfeuchtigkeit in Bienenstock 1 ist kleiner als 50%
+          labels:
+            affects: bienenstock-1
           isPaused: false
         - uid: fdx5zke6z1yiod
           title: Lichtwarnung Bienenstock 1
@@ -311,6 +315,8 @@ groups:
             __dashboardUid__: adx2z31woc8w0e
             __panelId__: "14"
             summary: Der Lichtwert für Bienenstock 1 ist außerhalb des Normalbereiches (3000 - 4095)
+          labels:
+            affects: bienenstock-1
           isPaused: false
         - uid: ddx5zs3u7r4sgd
           title: Temperaturwarnung Bienenstock 1
@@ -414,6 +420,8 @@ groups:
             __dashboardUid__: adx2z31woc8w0e
             __panelId__: "1"
             summary: Die Temperatur in Bienenstock 1 ist außerhalb des Normalbereiches (34 - 36 °C)
+          labels:
+            affects: bienenstock-1
           isPaused: false
         - uid: adx603yagoz5sf
           title: Temperaturwarnung Bienenstock 2
@@ -517,6 +525,8 @@ groups:
             __dashboardUid__: adx2z31woc8w0e
             __panelId__: "20"
             summary: Die Temperatur in Bienenstock 2 ist außerhalb des Normalbereiches (34 - 36 °C)
+          labels:
+            affects: bienenstock-2
           isPaused: false
         - uid: bdx6076up4ao0b
           title: Lichtwarnung Bienenstock 2
@@ -620,6 +630,8 @@ groups:
             __dashboardUid__: adx2z31woc8w0e
             __panelId__: "23"
             summary: Der Lichtwert für Bienenstock 1 ist außerhalb des Normalbereiches (3000 - 4095)
+          labels:
+            affects: bienenstock-2
           isPaused: false
         - uid: ddx60bcoqurcwa
           title: Luftfeuchtigkeit Bienenstock 2 > 70%
@@ -722,6 +734,8 @@ groups:
             __dashboardUid__: adx2z31woc8w0e
             __panelId__: "22"
             summary: Die Luftfeuchtigkeit in Bienenstock 2 ist größer als 70%
+          labels:
+            affects: bienenstock-2
           isPaused: false
         - uid: ddx60enyzsnb4a
           title: Luftfeuchtigkeit Bienenstock 2 < 50%
@@ -824,4 +838,6 @@ groups:
             __dashboardUid__: adx2z31woc8w0e
             __panelId__: "22"
             summary: Die Luftfeuchtigkeit in Bienenstock 2 ist kleiner als 50%
+          labels:
+            affects: bienenstock-2
           isPaused: false
