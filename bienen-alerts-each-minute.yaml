@@ -1,0 +1,827 @@
+apiVersion: 1
+groups:
+    - orgId: 1
+      name: each minute
+      folder: Bienen-Alerts
+      interval: 1m
+      rules:
+        - uid: ddx5yjhxzsbgga
+          title: Luftfeuchtigkeit Bienenstock 1 > 70%
+          condition: threshold
+          data:
+            - refId: humidity
+              relativeTimeRange:
+                from: 86400
+                to: 0
+              datasourceUid: cdx2tytjozvuof
+              model:
+                adhocFilters: []
+                alias: humidity
+                datasource:
+                    type: influxdb
+                    uid: cdx2tytjozvuof
+                groupBy: []
+                intervalMs: 1000
+                limit: ""
+                maxDataPoints: 43200
+                measurement: LoRa
+                orderByTime: ASC
+                policy: default
+                query: ""
+                rawSql: ""
+                refId: humidity
+                resultFormat: time_series
+                select:
+                    - - params:
+                            - humidity
+                        type: field
+                slimit: ""
+                tags:
+                    - key: deviceInfo::tag
+                      operator: =~
+                      value: /^a8b43a201e0fd1f6$/
+                tz: ""
+            - refId: last_humidity
+              relativeTimeRange:
+                from: 86400
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params: []
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - B
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: humidity
+                intervalMs: 1000
+                maxDataPoints: 43200
+                reducer: last
+                refId: last_humidity
+                type: reduce
+            - refId: threshold
+              relativeTimeRange:
+                from: 86400
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 70
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - C
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: last_humidity
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: threshold
+                type: threshold
+          dashboardUid: adx2z31woc8w0e
+          panelId: 7
+          noDataState: NoData
+          execErrState: Error
+          for: 0s
+          annotations:
+            __dashboardUid__: adx2z31woc8w0e
+            __panelId__: "7"
+            summary: Die Luftfeuchtigkeit in Bienenstock 1 ist größer als 70%
+          isPaused: false
+        - uid: fdx5yxcnoh9tsb
+          title: Luftfeuchtigkeit Bienenstock 1 < 50%
+          condition: threshold
+          data:
+            - refId: humidity
+              relativeTimeRange:
+                from: 86400
+                to: 0
+              datasourceUid: cdx2tytjozvuof
+              model:
+                adhocFilters: []
+                alias: humidity
+                datasource:
+                    type: influxdb
+                    uid: cdx2tytjozvuof
+                groupBy: []
+                intervalMs: 1000
+                limit: ""
+                maxDataPoints: 43200
+                measurement: LoRa
+                orderByTime: ASC
+                policy: default
+                query: ""
+                rawSql: ""
+                refId: humidity
+                resultFormat: time_series
+                select:
+                    - - params:
+                            - humidity
+                        type: field
+                slimit: ""
+                tags:
+                    - key: deviceInfo::tag
+                      operator: =~
+                      value: /^a8b43a201e0fd1f6$/
+                tz: ""
+            - refId: last_humidity
+              relativeTimeRange:
+                from: 86400
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params: []
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - B
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: humidity
+                intervalMs: 1000
+                maxDataPoints: 43200
+                reducer: last
+                refId: last_humidity
+                type: reduce
+            - refId: threshold
+              relativeTimeRange:
+                from: 86400
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 50
+                        type: lt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - C
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: last_humidity
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: threshold
+                type: threshold
+          dashboardUid: adx2z31woc8w0e
+          panelId: 7
+          noDataState: NoData
+          execErrState: Error
+          for: 0s
+          annotations:
+            __dashboardUid__: adx2z31woc8w0e
+            __panelId__: "7"
+            summary: Die Luftfeuchtigkeit in Bienenstock 1 ist kleiner als 50%
+          isPaused: false
+        - uid: fdx5zke6z1yiod
+          title: Lichtwarnung Bienenstock 1
+          condition: threshold
+          data:
+            - refId: light
+              relativeTimeRange:
+                from: 86400
+                to: 0
+              datasourceUid: cdx2tytjozvuof
+              model:
+                adhocFilters: []
+                alias: light
+                datasource:
+                    type: influxdb
+                    uid: cdx2tytjozvuof
+                groupBy: []
+                intervalMs: 1000
+                limit: ""
+                maxDataPoints: 43200
+                measurement: LoRa
+                orderByTime: ASC
+                policy: default
+                query: ""
+                rawSql: ""
+                refId: light
+                resultFormat: time_series
+                select:
+                    - - params:
+                            - light
+                        type: field
+                slimit: ""
+                tags:
+                    - key: deviceInfo::tag
+                      operator: =~
+                      value: /^a8b43a201e0fd1f6$/
+                tz: ""
+            - refId: last_light
+              relativeTimeRange:
+                from: 86400
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params: []
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - B
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: light
+                intervalMs: 1000
+                maxDataPoints: 43200
+                reducer: last
+                refId: last_light
+                type: reduce
+            - refId: threshold
+              relativeTimeRange:
+                from: 86400
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 3000
+                            - 4095
+                        type: outside_range
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - C
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: last_light
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: threshold
+                type: threshold
+          dashboardUid: adx2z31woc8w0e
+          panelId: 14
+          noDataState: NoData
+          execErrState: Error
+          for: 0s
+          annotations:
+            __dashboardUid__: adx2z31woc8w0e
+            __panelId__: "14"
+            summary: Der Lichtwert für Bienenstock 1 ist außerhalb des Normalbereiches (3000 - 4095)
+          isPaused: false
+        - uid: ddx5zs3u7r4sgd
+          title: Temperaturwarnung Bienenstock 1
+          condition: threshold
+          data:
+            - refId: temperature
+              relativeTimeRange:
+                from: 86400
+                to: 0
+              datasourceUid: cdx2tytjozvuof
+              model:
+                adhocFilters: []
+                alias: temperature
+                datasource:
+                    type: influxdb
+                    uid: cdx2tytjozvuof
+                groupBy: []
+                intervalMs: 1000
+                limit: ""
+                maxDataPoints: 43200
+                measurement: LoRa
+                orderByTime: ASC
+                policy: default
+                query: ""
+                rawSql: ""
+                refId: temperature
+                resultFormat: time_series
+                select:
+                    - - params:
+                            - temperature
+                        type: field
+                slimit: ""
+                tags:
+                    - key: deviceInfo::tag
+                      operator: =~
+                      value: /^a8b43a201e0fd1f6$/
+                tz: ""
+            - refId: last_temperature
+              relativeTimeRange:
+                from: 86400
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params: []
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - B
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: temperature
+                intervalMs: 1000
+                maxDataPoints: 43200
+                reducer: last
+                refId: last_temperature
+                type: reduce
+            - refId: threshold
+              relativeTimeRange:
+                from: 86400
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 34
+                            - 36
+                        type: outside_range
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - C
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: last_temperature
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: threshold
+                type: threshold
+          dashboardUid: adx2z31woc8w0e
+          panelId: 1
+          noDataState: NoData
+          execErrState: Error
+          for: 0s
+          annotations:
+            __dashboardUid__: adx2z31woc8w0e
+            __panelId__: "1"
+            summary: Die Temperatur in Bienenstock 1 ist außerhalb des Normalbereiches (34 - 36 °C)
+          isPaused: false
+        - uid: adx603yagoz5sf
+          title: Temperaturwarnung Bienenstock 2
+          condition: threshold
+          data:
+            - refId: temperature
+              relativeTimeRange:
+                from: 86400
+                to: 0
+              datasourceUid: cdx2tytjozvuof
+              model:
+                adhocFilters: []
+                alias: temperature
+                datasource:
+                    type: influxdb
+                    uid: cdx2tytjozvuof
+                groupBy: []
+                intervalMs: 1000
+                limit: ""
+                maxDataPoints: 43200
+                measurement: LoRa
+                orderByTime: ASC
+                policy: default
+                query: ""
+                rawSql: ""
+                refId: temperature
+                resultFormat: time_series
+                select:
+                    - - params:
+                            - temperature
+                        type: field
+                slimit: ""
+                tags:
+                    - key: deviceInfo::tag
+                      operator: =~
+                      value: /^c7e9197d15688c9d$/
+                tz: ""
+            - refId: last_temperature
+              relativeTimeRange:
+                from: 86400
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params: []
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - B
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: temperature
+                intervalMs: 1000
+                maxDataPoints: 43200
+                reducer: last
+                refId: last_temperature
+                type: reduce
+            - refId: threshold
+              relativeTimeRange:
+                from: 86400
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 34
+                            - 36
+                        type: outside_range
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - C
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: last_temperature
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: threshold
+                type: threshold
+          dashboardUid: adx2z31woc8w0e
+          panelId: 20
+          noDataState: NoData
+          execErrState: Error
+          for: 0s
+          annotations:
+            __dashboardUid__: adx2z31woc8w0e
+            __panelId__: "20"
+            summary: Die Temperatur in Bienenstock 2 ist außerhalb des Normalbereiches (34 - 36 °C)
+          isPaused: false
+        - uid: bdx6076up4ao0b
+          title: Lichtwarnung Bienenstock 2
+          condition: threshold
+          data:
+            - refId: light
+              relativeTimeRange:
+                from: 86400
+                to: 0
+              datasourceUid: cdx2tytjozvuof
+              model:
+                adhocFilters: []
+                alias: light
+                datasource:
+                    type: influxdb
+                    uid: cdx2tytjozvuof
+                groupBy: []
+                intervalMs: 1000
+                limit: ""
+                maxDataPoints: 43200
+                measurement: LoRa
+                orderByTime: ASC
+                policy: default
+                query: ""
+                rawSql: ""
+                refId: light
+                resultFormat: time_series
+                select:
+                    - - params:
+                            - light
+                        type: field
+                slimit: ""
+                tags:
+                    - key: deviceInfo::tag
+                      operator: =~
+                      value: /^c7e9197d15688c9d$/
+                tz: ""
+            - refId: last_light
+              relativeTimeRange:
+                from: 86400
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params: []
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - B
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: light
+                intervalMs: 1000
+                maxDataPoints: 43200
+                reducer: last
+                refId: last_light
+                type: reduce
+            - refId: threshold
+              relativeTimeRange:
+                from: 86400
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 3000
+                            - 4095
+                        type: outside_range
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - C
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: last_light
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: threshold
+                type: threshold
+          dashboardUid: adx2z31woc8w0e
+          panelId: 23
+          noDataState: NoData
+          execErrState: Error
+          for: 0s
+          annotations:
+            __dashboardUid__: adx2z31woc8w0e
+            __panelId__: "23"
+            summary: Der Lichtwert für Bienenstock 1 ist außerhalb des Normalbereiches (3000 - 4095)
+          isPaused: false
+        - uid: ddx60bcoqurcwa
+          title: Luftfeuchtigkeit Bienenstock 2 > 70%
+          condition: threshold
+          data:
+            - refId: humidity
+              relativeTimeRange:
+                from: 86400
+                to: 0
+              datasourceUid: cdx2tytjozvuof
+              model:
+                adhocFilters: []
+                alias: humidity
+                datasource:
+                    type: influxdb
+                    uid: cdx2tytjozvuof
+                groupBy: []
+                intervalMs: 1000
+                limit: ""
+                maxDataPoints: 43200
+                measurement: LoRa
+                orderByTime: ASC
+                policy: default
+                query: ""
+                rawSql: ""
+                refId: humidity
+                resultFormat: time_series
+                select:
+                    - - params:
+                            - humidity
+                        type: field
+                slimit: ""
+                tags:
+                    - key: deviceInfo::tag
+                      operator: =~
+                      value: /^c7e9197d15688c9d$/
+                tz: ""
+            - refId: last_humidity
+              relativeTimeRange:
+                from: 86400
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params: []
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - B
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: humidity
+                intervalMs: 1000
+                maxDataPoints: 43200
+                reducer: last
+                refId: last_humidity
+                type: reduce
+            - refId: threshold
+              relativeTimeRange:
+                from: 86400
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 70
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - C
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: last_humidity
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: threshold
+                type: threshold
+          dashboardUid: adx2z31woc8w0e
+          panelId: 22
+          noDataState: NoData
+          execErrState: Error
+          for: 0s
+          annotations:
+            __dashboardUid__: adx2z31woc8w0e
+            __panelId__: "22"
+            summary: Die Luftfeuchtigkeit in Bienenstock 2 ist größer als 70%
+          isPaused: false
+        - uid: ddx60enyzsnb4a
+          title: Luftfeuchtigkeit Bienenstock 2 < 50%
+          condition: threshold
+          data:
+            - refId: humidity
+              relativeTimeRange:
+                from: 86400
+                to: 0
+              datasourceUid: cdx2tytjozvuof
+              model:
+                adhocFilters: []
+                alias: humidity
+                datasource:
+                    type: influxdb
+                    uid: cdx2tytjozvuof
+                groupBy: []
+                intervalMs: 1000
+                limit: ""
+                maxDataPoints: 43200
+                measurement: LoRa
+                orderByTime: ASC
+                policy: default
+                query: ""
+                rawSql: ""
+                refId: humidity
+                resultFormat: time_series
+                select:
+                    - - params:
+                            - humidity
+                        type: field
+                slimit: ""
+                tags:
+                    - key: deviceInfo::tag
+                      operator: =~
+                      value: /^c7e9197d15688c9d$/
+                tz: ""
+            - refId: last_humidity
+              relativeTimeRange:
+                from: 86400
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params: []
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - B
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: humidity
+                intervalMs: 1000
+                maxDataPoints: 43200
+                reducer: last
+                refId: last_humidity
+                type: reduce
+            - refId: threshold
+              relativeTimeRange:
+                from: 86400
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 50
+                        type: lt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - C
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: last_humidity
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: threshold
+                type: threshold
+          dashboardUid: adx2z31woc8w0e
+          panelId: 22
+          noDataState: NoData
+          execErrState: Error
+          for: 0s
+          annotations:
+            __dashboardUid__: adx2z31woc8w0e
+            __panelId__: "22"
+            summary: Die Luftfeuchtigkeit in Bienenstock 2 ist kleiner als 50%
+          isPaused: false
