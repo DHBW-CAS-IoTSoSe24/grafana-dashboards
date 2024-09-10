@@ -2,7 +2,7 @@ apiVersion: 1
 groups:
     - orgId: 1
       name: each minute
-      folder: Bienen-Alerts
+      folder: Bienen
       interval: 1m
       rules:
         - uid: ddx5yjhxzsbgga

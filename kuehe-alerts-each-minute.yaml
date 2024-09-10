@@ -1,0 +1,322 @@
+apiVersion: 1
+groups:
+    - orgId: 1
+      name: each minute
+      folder: Kühe
+      interval: 1m
+      rules:
+        - uid: cdx6cv11baw3kd
+          title: Temperaturwarnung Kuhstall innen
+          condition: threshold
+          data:
+            - refId: temperature
+              relativeTimeRange:
+                from: 21600
+                to: 0
+              datasourceUid: cdx2tytjozvuof
+              model:
+                adhocFilters: []
+                alias: temperature
+                datasource:
+                    type: influxdb
+                    uid: cdx2tytjozvuof
+                groupBy: []
+                intervalMs: 1000
+                limit: ""
+                maxDataPoints: 43200
+                measurement: WLAN
+                orderByTime: ASC
+                policy: default
+                query: ""
+                rawSql: ""
+                refId: temperature
+                resultFormat: time_series
+                select:
+                    - - params:
+                            - temperature
+                        type: field
+                slimit: ""
+                tags:
+                    - key: deviceInfo::tag
+                      operator: =
+                      value: 94F75137D389A598
+                tz: ""
+            - refId: last_temperature
+              relativeTimeRange:
+                from: 21600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params: []
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - B
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: temperature
+                intervalMs: 1000
+                maxDataPoints: 43200
+                reducer: last
+                refId: last_temperature
+                type: reduce
+            - refId: threshold
+              relativeTimeRange:
+                from: 21600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 5
+                            - 14
+                        type: outside_range
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - C
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: last_temperature
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: threshold
+                type: threshold
+          dashboardUid: ddx2z5ooxmtj4b
+          panelId: 20
+          noDataState: NoData
+          execErrState: Error
+          for: 0s
+          annotations:
+            __dashboardUid__: ddx2z5ooxmtj4b
+            __panelId__: "20"
+            summary: Die Temperatur in Kuhstall ist außerhalb des Normalbereiches (5 - 14 °C)
+          labels:
+            affects: kuhstall-innen
+          isPaused: false
+        - uid: cdx6d5mont0qod
+          title: Luftfeuchtigkeitswarnung Kuhstall innen
+          condition: threshold
+          data:
+            - refId: humidity
+              relativeTimeRange:
+                from: 21600
+                to: 0
+              datasourceUid: cdx2tytjozvuof
+              model:
+                adhocFilters: []
+                alias: humidity
+                datasource:
+                    type: influxdb
+                    uid: cdx2tytjozvuof
+                groupBy: []
+                intervalMs: 1000
+                limit: ""
+                maxDataPoints: 43200
+                measurement: WLAN
+                orderByTime: ASC
+                policy: default
+                query: ""
+                rawSql: ""
+                refId: humidity
+                resultFormat: time_series
+                select:
+                    - - params:
+                            - humidity
+                        type: field
+                slimit: ""
+                tags:
+                    - key: deviceInfo::tag
+                      operator: =
+                      value: 94F75137D389A598
+                tz: ""
+            - refId: last_humidity
+              relativeTimeRange:
+                from: 21600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params: []
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - B
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: humidity
+                intervalMs: 1000
+                maxDataPoints: 43200
+                reducer: last
+                refId: last_humidity
+                type: reduce
+            - refId: threshold
+              relativeTimeRange:
+                from: 21600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 50
+                            - 69
+                        type: outside_range
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - C
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: last_humidity
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: threshold
+                type: threshold
+          dashboardUid: ddx2z5ooxmtj4b
+          panelId: 21
+          noDataState: NoData
+          execErrState: Error
+          for: 0s
+          annotations:
+            __dashboardUid__: ddx2z5ooxmtj4b
+            __panelId__: "21"
+            summary: Die Luftfeuchtigkeit in Kuhstall ist außerhalb des Normalbereiches (50-69 %)
+          labels:
+            affects: kuhstall-innen
+          isPaused: false
+        - uid: adx6etpc80u0wf
+          title: Differenz zwischen Außen u. Innen Temperatur - Kuhstall
+          condition: C
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 86400
+                to: 0
+              datasourceUid: cdx2tytjozvuof
+              model:
+                adhocFilters: []
+                alias: ""
+                datasource:
+                    type: influxdb
+                    uid: cdx2tytjozvuof
+                groupBy: []
+                intervalMs: 1000
+                limit: ""
+                maxDataPoints: 43200
+                measurement: WLAN
+                orderByTime: ASC
+                policy: default
+                query: ""
+                rawSql: ""
+                refId: A
+                resultFormat: time_series
+                select:
+                    - - params:
+                            - temperature
+                        type: field
+                      - params: []
+                        type: non_negative_difference
+                slimit: ""
+                tags: []
+                tz: ""
+            - refId: B
+              relativeTimeRange:
+                from: 86400
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params: []
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - B
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: A
+                intervalMs: 1000
+                maxDataPoints: 43200
+                reducer: last
+                refId: B
+                type: reduce
+            - refId: C
+              relativeTimeRange:
+                from: 86400
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 10
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params: []
+                      reducer:
+                        params: []
+                        type: avg
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: B
+                hide: false
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: C
+                type: threshold
+          dashboardUid: ddx2z5ooxmtj4b
+          panelId: 22
+          noDataState: NoData
+          execErrState: Error
+          for: 0s
+          annotations:
+            __dashboardUid__: ddx2z5ooxmtj4b
+            __panelId__: "22"
+            summary: Die Differenz zwischen außen und innen Temperatur im Kuhstall ist größer als 10 °C
+          labels:
+            affects: kuhstall-innen
+          isPaused: false
